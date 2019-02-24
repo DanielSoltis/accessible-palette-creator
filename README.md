@@ -1,7 +1,5 @@
 # Accessible Palette Creator
 
-<h2>What is this?</h2>
-
 The Accessible Palette Creator is a tool for building color palettes to meet <a href = 'https://www.w3.org/TR/WCAG21/' target='_blank'>Web Content Accessibility Guidelines</a> for color contrast. 
 
 The tool divides colors into four groups: dark high contrast and dark medium contrast, and light high contrast and light medium contrast. (In use, this could be light text on a dark background, or dark text on a light background.) Within each group, the color picker limits available colors so that pairs of dark and light colors meet accessibility guidelines as shown:
