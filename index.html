@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html lang = 'en'>
+
+    <head>
+        <meta charset='utf-8'/>
+        <title>Accessible Palette Creator</title>
+
+        <script type='text/javascript' src='create-palette-2.js'></script>
+        
+        <link rel='stylesheet' href='styles.css'>
+    </head>
+    
+    <body>
+        
+        <!-- MENU -->
+
+        <div id = 'menu-container'>
+            <div id = 'menu-top-container'>
+                <button id = 'about-button' class = 'standard-button'>About</button>
+                <h1>Accessible Palette Creator</h1>
+            </div>
+
+            <div id = 'menu-buttons-container' >
+
+                <button id = 'load-button' class = 'left-menu-button standard-button'>
+                    Open palette
+                </button>
+
+                <button id = 'save-csv-button' class = 'left-menu-button standard-button'>
+                    Save palette
+                </button>
+
+                <button id = 'save-ase-button' class = 'left-menu-button standard-button'>
+                    Export as ASE
+                </button>
+
+                <button id = 'save-sketch-button' class = 'left-menu-button standard-button'>
+                    Export for Sketch
+                </button>
+
+                <button id = 'clear-all-button' class = 'right-menu-button standard-button'>
+                    Clear all
+                </button> 
+
+                <button id = 'overview-button' class = 'right-menu-button standard-button'>
+                    Palette overview
+                </button>
+
+                <div class='dropdown'>
+                    <button id = 'sort-button' class = 'right-menu-button standard-button dropdown-button'>
+                        Sort by &dtri;
+                    </button>
+                    <div id='sort-dropdown' class='dropdown-content'>
+                        <button class = 'dropdown-action-button' id = 'dropdown-hue'>Hue</button>
+                        <button class = 'dropdown-action-button' id = 'dropdown-sat'>Saturation</button>
+                        <button class = 'dropdown-action-button' id = 'dropdown-lum'>Luminance</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <hr id = 'menu-bottom-rule'>
+        </div>
+        
+        <!-- MAIN INTERFACE -->
+            
+        <div id = 'main-interface-container'>
+            <div id = 'main-interface-centering-container'>
+
+                <div class = 'group-colors-container' id = 'low-contrast-dark-group-container'>
+                    <div class = 'group-fixed-top'>
+                        <div class = 'group-label'><strong>Dark</strong><br>Medium contrast</div>
+                        <button id = 'low-contrast-dark-button' class = 'add-color-button standard-button'>
+                            <div class = 'add-color-button-message'>New color</div>
+                            <div class = 'add-color-label'></div>
+                            <hr class = 'add-button-rule'>
+                        </button>
+                    </div>
+                    <div class = 'group-table-container'>
+                        <table class = 'group-table' id = 'low-contrast-dark'></table>
+                    </div>
+                </div>
+
+                <div class = 'group-colors-container' id = 'high-contrast-dark-group-container'>
+                    <div class = 'group-fixed-top'>
+                        <div class = 'group-label'><strong>Dark</strong><br>High contrast</div>
+                        <button id = 'high-contrast-dark-button' class = 'add-color-button standard-button'>
+                            <div class = 'add-color-button-message'>New color</div>
+                            <div class = 'add-color-label'></div>
+                            <hr class = 'add-button-rule'>
+                        </button>
+                    </div>
+                    <div class = 'group-table-container'>
+                        <table class = 'group-table' id = 'high-contrast-dark'></table>
+                    </div>
+                    
+                </div>                
+
+                <div id = 'color-picker-container'>
+
+                    <div id = 'empty-state-panel'>
+                        <div id = 'initial-message' class = 'empty-state-message'>
+                        
+                            <p class = 'empty-state-text' style = 'font-size: 1em'>
+                                <strong>Build palettes to meet WCAG contrast requirements</strong>
+                            </p>
+                            
+                            <img src = 'images/emptystateimage.png' alt = 'Add dark colors on the left. Add light colors on the right.'>
+                            
+                            <br>
+                            
+                            <p class = 'empty-state-text'>
+                                Every light+dark pair of <strong>high contrast</strong> colors<br>will have a contrast rating of <strong>AA</strong> or better.
+                            </p>
+                            
+                            <p class = 'empty-state-text'>
+                                Every light+dark pair of a <strong>medium contrast</strong> color<br>with a <strong>high contrast</strong> color will have<br>a contrast rating of <strong>AA Large</strong> or better.
+                            </p>
+                            
+                            <button id = 'empty-state-button' class = 'standard-button'>More about this tool</button>
+                            
+                        </div>
+                        
+                        <div id = 'repeating-message' class = 'empty-state-message'>
+                            
+                            <br style = "line-height:30px">
+                            
+                            <img src = 'images/emptystateimage.png' alt = 'Add dark colors on the left. Add light colors on the right.'>
+                            
+                            <br>
+                            <br>
+                            
+                            <p class = 'empty-state-text' style = 'font-size: 1em'>
+                                Click on an existing color to change or delete it.
+                            </p>
+                            
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            
+                            <p class = 'empty-state-text'>
+                                <em>Note: The color picker mostly shows colors<br>
+                                in the desired contrast range, but it's not perfect.<br>
+                                If you want a color at the bottom or top of the grid,<br>
+                                    double check its contrast values before saving it.</em>
+                            </p>
+                            
+                        </div>
+                    </div>
+
+                    <div id = 'color-picker-label'></div>
+       
+                    <div class = 'top-input-container'>
+                        <div class = 'input-label'>Name</div>
+                        <input class='text-input' type='text' id='name-input' placeholder = 'Optional color name'>
+                    </div>
+                    
+                    <div class = 'top-input-container'>
+                        <div class = 'input-label'>Hex #</div>
+                        <input class='color-component-input' type='text' id='hex-input' placeholder = '87c5c5'>
+                    </div>
+
+                    <div id = 'display-container'>
+
+                        <div id='sat-lum-container'>
+                            <button class = 'draggable-thumb' id = 'sat-lum-thumb'></button>
+                            <canvas id = 'sat-lum-canvas' width = '360' height = '360'></canvas>   
+                        </div>
+
+                        <div id='hue-container'>
+                            <button class = 'draggable-thumb' id = 'hue-thumb'></button>
+                            <canvas id = 'hue-canvas' width = '24' height = '360'></canvas>   
+                        </div>
+                        
+                        <div id = 'rgb-hsl-display'>
+                            <div class='rgb-entry-form'>
+                                <div class = 'input-label'>Red</div>
+                                <input class='color-component-input' type='number' id='red-input' placeholder = '135'>
+                            </div>
+                            <div class='rgb-entry-form'>
+                                <div class = 'input-label'>Green</div>
+                                <input class='color-component-input' type='number' id='green-input' placeholder = '197'>
+                            </div>
+                            <div class='rgb-entry-form'>
+                                <div class = 'input-label'>Blue</div>
+                                <input class='color-component-input' type='number' id='blue-input' placeholder = '197'>
+                            </div>
+
+                             <hr id = 'component-rule'>
+
+                            <div class='rgb-entry-form'>
+                                <div class = 'input-label'>Hue</div>
+                                <input class='color-component-input' type='number' id='hue-input' placeholder = '180'>
+                            </div>
+                            <div class='rgb-entry-form'>
+                                <div class = 'input-label'>nSat</div>
+                                <input class='color-component-input' type='number' step = '0.01' id='sat-input' placeholder = '0.50'>
+                            </div>
+                            <div class='rgb-entry-form'>
+                                <div class = 'input-label'>nLum</div>
+                                <input class='color-component-input' type='number' step = '0.01' id='lum-input' placeholder = '0.50'>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <button id = 'cancel-button' class = 'secondary-button'>Cancel</button>
+                    <button id = 'confirm-button' class = 'standard-button'>Save</button>
+
+                </div>
+
+                <div class = 'group-colors-container' id = 'high-contrast-light-group-container'>
+                    <div class = 'group-fixed-top'>
+                        <div class = 'group-label'><strong>Light</strong><br>High contrast</div>
+                        <button id = 'high-contrast-light-button' class = 'add-color-button standard-button'>
+                            <div class = 'add-color-button-message'>New color</div>
+                            <div class = 'add-color-label'></div>
+                            <hr class = 'add-button-rule'>
+                        </button>
+                    </div>
+                    <div class = 'group-table-container'>
+                        <table class = 'group-table' id = 'high-contrast-light'></table>
+                    </div>
+                </div>      
+
+                <div class = 'group-colors-container' id = 'low-contrast-light-group-container'>
+                    <div class = 'group-fixed-top'>
+                        <div class = 'group-label'><strong>Light</strong><br>Medium contrast</div>
+                        <button id = 'low-contrast-light-button' class = 'add-color-button standard-button'>
+                            <div class = 'add-color-button-message'>New color</div>
+                            <div class = 'add-color-label'></div>
+                            <hr class = 'add-button-rule'>
+                        </button>
+                    </div>
+                    <div class = 'group-table-container'>
+                        <table class = 'group-table' id = 'low-contrast-light'></table>
+                    </div>
+                </div>
+                
+            </div>  
+        </div>    
+  
+        
+        <!-- MODAL VIEWS -->
+        
+        <div id = 'modal-background'></div>
+        
+        <div id = 'about-modal' class = 'modal-window'>
+            <button class = 'close-button standard-button'>&times;</button>
+            
+            <div class = 'modal-fixed-top'>
+                <div class = 'modal-label'>About</div>
+                
+                <div id = 'about-scroll-container'>
+                    <div id = 'about-text-container'>
+                        <h2>What is this?</h2>
+
+                        <p class = 'about-text'>
+                            The Accessible Palette Creator is a tool for building color palettes to meet <a href = 'https://www.w3.org/TR/WCAG21/' target='_blank'>Web Content Accessibility Guidelines</a> for color contrast. 
+                        </p>
+
+                        <p class = 'about-text'>
+                            The tool divides colors into four groups: dark high contrast and dark medium contrast, and light high contrast and light medium contrast. (In use, this could be light text on a dark background, or dark text on a light background.) Within each group, the color picker limits available colors so that pairs of dark and light colors meet accessibility guidelines as shown:
+                        </p>
+
+                        <p class = 'about-text'>
+                            <img src = 'images/colorpairdiagram.png' width = '420px' alt = 'Diagram illustrating the contrast values between each group of colors. This is explained in the next paragraph.'>
+                        </p>
+
+                        <p class = 'about-text'>
+                            This tool is intended to create fairly bulletproof palettes. Every dark+light pair of high contrast colors is AA or better, and every dark+light pair of a high contrast and a medium contrast color is AA Large or better. While this constrains choices in creating the palette, it allows for a lot of flexibility in using the palette.
+                        </p>
+
+                        <h2>Basic instructions</h2>
+
+                        <p class = 'about-text'>
+                            The interface works best on laptop or larger screen.
+                        </p>
+
+                        <p class = 'about-text'>
+                            To add a color, select the ‘New color’ button in one of the four groups. Use the color picker to choose a color. In addition to using the color grid, you can enter values for hex, RGB or <a href = 'https://accessibility.kde.org/hsl-adjusted.php' target='_blank'>normalized HSL</a>. Click ‘Add’ or ‘Save’ to add the color to the palette.
+                        </p>
+
+                        <p class = 'about-text'>
+                            To modify or delete an existing color, click on it. Click on ‘Update color’ or ’Save’ to save any changes, or ‘Cancel’ to deselect the color and revert to its original value.
+                        </p>
+
+                        <p class = 'about-text'>
+                            ‘Save palette’ and ‘Open palette’ download/upload CSV files. You can export to .ASE (for Adobe) and .sketchpalette (for Sketch with the <a href = 'https://github.com/andrewfiorillo/sketch-palettes' target='_blank'>Sketch Palettes plugin</a>). These save the color values but not the groupings, so the files can’t be used to reopen the palette in the tool.
+                        </p>
+                        
+                        <h2>Keyboard shortcuts</h2>
+
+                        <ul>
+                            <li><em>Enter</em> to save a color</li>
+                            <li><em>Escape</em> to deselect a button or close a modal window</li>
+                            <li>If you select the thumb for hue or saturation/luminance, <em>arrow keys</em> move its position</li>
+                            <li>If you hover over an existing color and hit the <em>space bar</em>, the picker will adjust to match that color (if you’re in the same group) or the hue and saturation values of that color (if you’re in a different group)</li>
+                        </ul>
+
+                        <h2>How it works</h2>
+
+                        <p class = 'about-text'>
+                            The color picker uses a variation of an HSL colorspace to show available colors. For a given hue, the picker shows a grid of colors according to saturation (horizontal axis) and luminosity (vertical axis).
+                        </p>
+
+                        <p class = 'about-text'>
+                            Saturation and luminosity values are normalized using <a href = 'https://accessibility.kde.org/hsl-adjusted.php' target='_blank'>KDE's calculations</a>, so that for any given luminosity value, the contrast against another color is (almost) the same. This lets the tool build the color picker without having to calculate the relative luminance for every color (which would take forever). 
+                        </p>
+
+                        <p class = 'about-text'>
+                            However, it’s not a perfect match with the <a href = 'https://www.w3.org/TR/WCAG21/#dfn-relative-luminance' target='_blank'>calculation used in the WCAG standard</a>. It gives a good ballpark range, but if you want to use a color at the top or bottom of the picker, <em>keep an eye on the actual contrast value against other colors in the palette</em>.
+                        </p>
+
+                        <h2>Source code and copyright</h2>
+                        <p class = 'about-text'>
+                            Copyright under <a href = https://opensource.org/licenses/MIT target='_blank'>MIT License</a> by Daniel Soltis 2019. Source code is available <a href = 'https://github.com/DanielSoltis/accessible-palette-creator' target='_blank'>on Github</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id = 'overview-modal' class = 'modal-window'>
+            <button class = 'close-button standard-button'>&times;</button>
+            
+            <div class = 'modal-fixed-top'>
+                <div class = 'modal-label'>Palette</div>
+                <div id = 'overview-table-container'>
+                    <table id = 'overview-table'></table>
+                </div>
+            </div>
+        </div>
+           
+    </body>
+    
+</html>

@@ -1,0 +1,711 @@
+/*
+Dark text                           #1e1e1e
+Primary buttons                     #555555
+'transparent' background, borders   #888888
+Secondary buttons                   #c3c3c3
+Body and modal background           #ececec
+Light text, controls background     #fafafa
+Delete color, error message         #cc0000
+*/
+
+/*OVERALL STYLING*/
+body, p {
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, sans-serif;
+    background-color: #ececec;
+    color: #1e1e1e;
+    
+    /*not sure if this an accessibility issue. keeps you from selecting text when you click on buttons*/
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+h1 {
+    margin: 18px 0px 0px 0px;
+    font-size: 1.375em;
+    font-weight: 500;
+}
+
+h2 {
+    margin: 0px;
+    margin-bottom: 0.25em;
+    padding: 0px;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+img{
+    display: block;
+    margin: 12px auto 12px auto;
+    width: 100%;
+}
+
+a {
+    color: #0000cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+:focus {
+    outline: none;
+    box-shadow: 2px 2px 2px #777777;
+    border: solid 1px #777777;
+}
+
+button { /*destyle buttons*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    margin: 0px;
+    border: none;
+    border-radius: 3px;
+    padding: 0px;
+
+    font-family: sans-serif;
+    font-size: 1em;
+    text-align: center;
+    text-decoration: none;
+    
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.standard-button {
+    border: 1px solid #888888;
+    background-color: #fafafa;
+    color: #1e1e1e;
+}
+
+.standard-button:active {
+    border-color: #1e1e1e;
+    background-color: #c3c3c3;
+}
+
+.secondary-button {
+    border: 1px solid #c3c3c3;
+    background-color: #fafafa;
+    color: #555555;
+}
+
+.disabled {
+    background-color: #fafafa;
+    color: #c3c3c3;
+}
+
+.secondary-button:active {
+    border-color: #1e1e1e;
+    background-color: #c3c3c3;
+    color: #1e1e1e;
+}
+
+table, tr, td {
+    margin: 0px;
+    border: none;
+    padding: 0px;
+}
+
+/*MENU*/
+
+#menu-container{
+    z-index: 200;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    height: 120px;
+    background-color:#ececec;
+}
+
+#menu-top-container {
+    margin: 0px 18px;
+    min-width: 1176px;
+    height: 30px;
+}
+
+#about-button {
+    float: right;
+    margin-top: 3px;
+    width: 60px;
+    height: 24px;
+    font-size: 0.9em;
+}
+
+#menu-buttons-container {
+    margin: 12px 18px;
+    min-width: 1176px;
+    height: 30px;
+}
+
+.left-menu-button {
+    float: left;
+    margin-right: 18px;
+    padding: 0px 12px;
+    min-width: 96px;
+    height: 30px;
+    line-height: 30px;
+}
+
+input[type="file"] { /*hack to treat the load button as an HTML file input but still have custom styling*/ 
+    display: none;
+}
+
+.right-menu-button {
+    float: right;
+    margin-left: 18px;
+    padding: 0px 12px;
+    min-width: 96px;
+    height: 30px;
+    line-height: 30px;
+}
+
+#menu-bottom-rule {
+    margin: 16px 0px 0px 0px;
+    box-shadow: 0px 1px 1px -1px #c3c3c3;
+    border: none;
+    border-bottom: 1px solid #c3c3c3;
+    width: 100%;
+    height: 2px;
+}
+
+/* DROPDOWN FOR SORT*/
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    float: right;
+}
+
+.dropdown-button {
+    width: 104px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    z-index: 100;
+    display: none;
+    
+    position: absolute;
+    top: 85px;
+    
+    border: 1px solid #c3c3c3;
+    border-radius: 3px;
+    margin-left: 18px;
+    width: 102px;
+    
+    background-color: #fafafa;
+    opacity: 0.98;
+    
+    font-size: 0.95em;
+}
+
+/* Links inside the dropdown */
+.dropdown-action-button {
+    width: 100%;
+    height: 36px;
+}
+
+.dropdown-action-button:hover {
+    background-color: #ececec;
+}
+
+/* Show the dropdown menu */
+.show {
+    display: block;
+}
+
+/* MAIN VIEW */
+
+#main-interface-container {
+    position: absolute;
+    top: 120px;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    min-width: 1176px;  
+}
+
+#main-interface-centering-container {
+    position: relative;
+    margin: 0px auto;
+    width: 1176px;
+    height: 100%;
+}
+
+.group-colors-container {
+    position: relative;
+    float: left;
+    margin-left:12px;
+    width: 150px;
+    height: 100%;
+    min-height: 540px;
+    background-color: #fafafa; 
+}
+
+#low-contrast-dark-group-container {
+    margin-left:0px;
+}
+
+.group-fixed-top {
+    z-index: 30;
+    position: absolute;
+    padding: 12px;
+    width: 126px;
+    height: 102px;
+    background-color: #fafafa;
+}
+
+.group-label {
+    position: relative;
+    margin-bottom: 12px;
+    width: 126px;
+    height: 42px;
+    text-align: center;
+    line-height: 21px;
+    font-size:0.9em;
+}
+
+.add-color-button {
+    position: relative;
+    width: 126px;
+    height: 56px;
+}
+
+.add-color-button-selected {
+    border: 1px solid #1e1e1e;
+}
+
+.add-color-button-message {
+    position: relative;
+    margin: 0px auto;
+    width: 100%;
+    height: 100%;
+    line-height: 54px;
+    font-weight: 500;
+}
+
+.add-color-label {
+    position: relative;
+    border: none;
+    margin: 0px auto;
+    width: 100%;
+    height: 24px;
+    color: #1e1e1e;
+    text-align: center;
+    line-height: 24px;
+    font-size: 0.85em;
+}
+
+.add-button-rule {
+    position: relative;
+    outline: none;
+    margin: -3px -13px;
+    box-shadow: 0px 1px 1px -1px #c3c3c3;
+    border: none;
+    border-bottom: 1px solid #c3c3c3;
+    width: 150px;
+    height: 2px;
+}
+
+.group-table-container{
+    position: absolute;
+    top: 144px;
+    bottom: 0px;
+    overflow: scroll;
+}
+
+.group-table {
+    position: relative;
+    width: 150px;
+    border-spacing: 12px;
+}
+
+.group-td {
+    position: relative;
+}
+
+.group-color-button {
+    border: 1px solid #fafafa;
+    border-radius: 0px;
+    width: 126px;
+    height: 58px;
+}
+
+.group-color-button-light {
+    border-color: #1e1e1e;
+}
+
+.group-color-button-selected {
+    border-color: #c3c3c3;
+}
+
+.contrast-label {
+    visibility: hidden;
+    position: absolute;
+    top: 11px;
+    width: 124px;
+    height: 36px;
+    line-height: 18px;
+    text-align: center;
+    color: #fafafa;
+}
+
+.group-color-label {
+    position: relative;
+    border: 1px solid #fafafa;
+    margin-top: 57px;
+    margin-left: -1px;
+    width: 124px;
+    background-color: #fafafa;
+
+    font-size: 0.85em;
+    line-height: 21px;
+    height: 21px;
+    color: #1e1e1e;
+}
+
+.group-color-label-selected {
+    border-color: #c3c3c3;
+    background-color: #c3c3c3;
+}
+
+.delete-button {
+    z-index: 10;
+    
+    position: absolute;
+    box-shadow: 1px 1px 1px #555555;
+    top: -12px;
+    left: -12px;
+    border: 1px solid #fafafa;
+    border-radius: 15px;
+    padding-bottom: 3px;
+    width: 30px;
+    height: 30px;
+    
+    background-color: #cc0000;
+    color: #fafafa;
+    line-height: 27px;
+    text-align: center;
+    font-size: 1.25em;
+    visibility: hidden;
+}
+
+.delete-button:hover {
+    opacity: 1;
+    background-color: #dd0000;
+}
+
+/*central color picker*/
+
+#empty-state-panel {
+    position: absolute;
+    width: 528px;
+    height: 540px;
+    margin: -6px 0px 0px -18px;
+    background-color: rgba(250,250,250,0.95);
+    z-index: 60;
+}
+
+.empty-state-message {
+    display: block;
+    text-align: center;
+    margin: 24px auto 0px auto;
+}
+
+#initial-message{
+    display: none;
+}
+
+#repeating-message{
+    display: none;
+}
+
+.empty-state-text{
+    margin-bottom:18px;
+    line-height:24px;
+    font-size: 0.9em;
+    background-color:transparent;
+}
+
+#empty-state-button{
+    margin-top: 12px;
+    width: 180px;
+    height: 36px;
+}
+
+#color-picker-container {
+    float: left;
+    margin: 0px 0px 0px 12px;
+    padding: 6px 18px 0px 18px;
+    width: 492px;
+    height: 534px;
+    overflow: scroll;
+    background-color: #fafafa;
+}
+
+#color-picker-label {
+    position: relative;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 500;   
+}
+
+.top-input-container {
+    z-index: 50;
+    position: relative;
+    float: left;
+    margin-bottom: 18px; 
+    margin-right: 24px; 
+}
+
+.input-label {
+    margin-bottom: 4px;
+    height: 14px;
+    font-size: 0.8em;
+}
+
+.text-input {
+    margin: 0px;
+    padding:0px;
+    padding-left: 3px;
+    height:22px;
+    line-height: 22px;
+    font-size: 0.9em;
+}
+
+#name-input {
+    width: 378px;
+}
+
+#hex-input {
+    margin-right: -24px;
+    width:76px;
+}
+
+#rgb-hsl-display {
+    position: relative;
+    float: left;
+    margin-top: -6px;
+    margin-left: 24px;
+}
+
+.rgb-entry-form {
+    margin: 9px 0px;
+}
+
+.color-component-input {
+    margin: 0px;
+    padding:0px;
+    padding-left: 3px;
+    width: 53px;
+    height:22px;
+    line-height: 22px;
+    font-size: 0.9em;  
+}
+
+#component-rule {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #c3c3c3;
+    margin-bottom:18px;
+    margin-top:18px;
+    height: 0px;   
+}
+
+#sat-lum-container {
+    float: left;
+    position: relative;
+    width: 360px;
+    height: 360px;
+}
+
+#sat-lum-canvas {
+    width: 360px;
+    height: 360px;
+}
+
+#hue-container {
+    float: left;
+    position: relative;
+    margin-left: 24px;
+    width: 24px;
+    height: 360px;
+}
+
+#hue-canvas {
+    width: 24px;
+    height: 360px; 
+}
+
+.draggable-thumb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 2px solid #7f7f7f;
+    background-color: transparent;
+}
+
+.draggable-thumb:active, .draggable-thumb:focus {
+    box-shadow: none;
+    border-width: 4px;
+}
+
+#hue-thumb {
+    top: 180px;
+    margin-left: -14px;
+    margin-top: -6px;
+    width: 28px;
+    height: 12px;
+}
+
+#sat-lum-thumb {
+    margin-left: -12px;
+    margin-top: -12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+}
+
+#cancel-button {
+    position: relative;
+    float:left;
+    margin: 24px 0px 0px 0px;
+    width:234px;
+    height:32px;
+    line-height:32px;
+}
+
+#confirm-button {
+    position: relative;
+    float:left;
+    margin: 24px 0px 0px 24px;
+    width:234px;
+    height:32px;
+    line-height:32px;
+}
+
+/* MODAL WINDOWS */
+
+#modal-background {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #888888; 
+}
+
+.modal-window {
+    z-index: 110;
+    display: none;
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    padding: 12px;
+    min-width: 1152px;
+    overflow: scroll;
+    background-color: #ececec;
+}
+
+.close-button {
+    float: right;
+    padding: 0px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    width: 30px;
+    height: 29px;
+    line-height: 26px;
+    text-align: center;
+    font-size: 1.25em;
+}
+
+/*fixed top*/
+.modal-fixed-top {
+    position:fixed;
+    top:24px;
+    left:36px;
+    padding: 6px 0px 18px 0px;
+}
+
+.modal-label {
+    float:left;
+    margin-left: 24px;
+    height: 30px;
+    line-height: 30px;
+    font-size:1.5em;  
+}
+
+#about-scroll-container{
+    position:fixed;
+    top:78px;
+    bottom:30px;
+    left:36px;
+    right: 36px;
+    overflow:scroll;
+}
+
+#about-text-container {
+    padding:24px 24px 12px 24px;
+    width:768px;
+    background-color:#fafafa;
+}
+
+.about-text {
+    margin-bottom:18px;
+    line-height:24px;
+    background-color:transparent;
+}
+
+#overview-table-container {
+    position:fixed;
+    top:78px;
+    bottom:30px;
+    left:36px;
+    right:36px;
+    min-width: 1128px;
+    padding-top: 6px;
+    overflow:scroll;
+    background-color:#fafafa;
+}
+
+#overview-table {
+    padding:12px;
+    border-spacing: 6px;
+}
+
+.overview-header {
+    border-top: 1px solid #c3c3c3;
+    padding: 12px 12px 0px 0px;
+    height: 65px;
+    width: 192px;
+    vertical-align: top;
+    text-align: right;
+    font-weight: 500;
+    font-size: 0.85em; 
+}
+
+.overview-item {
+    width: 120px;
+    height: 72px;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 21px;
+    font-size: 0.9em;
+}
+
+.top-row-for-group {
+     border-top: 6px solid #fafafa;
+}
