@@ -1,4 +1,4 @@
-# accessible-palette-creator
+# Accessible Palette Creator
 
 <h2>What is this?</h2>
 
