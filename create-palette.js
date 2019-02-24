@@ -212,7 +212,7 @@ Each color is an object with the format
         }
         
         //deselects a selected color if you click on an inactive area of the window. there's gotta be a better way.
-        if (t.matches('.group-color-button') || t.matches('.add-color-button-message') || t.matches('.standard-button') || t.matches('.text-input') || t.matches('.color-component-input') || t.matches('.draggable-thumb') || t.matches('#modal-background') || t.matches('.contrast-label') || t.matches('.group-color-label')) {
+        if (t.matches('.group-color-button') || t.matches('.add-color-button-message') || t.matches('.standard-button') || t.matches('.text-input') || t.matches('.color-component-input') || t.matches('.draggable-thumb') || t.matches('#modal-background') || t.matches('.contrast-label') || t.matches('.group-color-label') || t.matches('#sat-lum-canvas') || t.matches('#hue-canvas')) {
             outsideActiveArea = false;
         }
 
@@ -697,6 +697,7 @@ Each color is an object with the format
         closeDragThumb = function () {
             
             // stop moving when mouse button is released
+            thumb.focus();
             document.onmouseup = null;
             document.onmousemove = null;
         };
